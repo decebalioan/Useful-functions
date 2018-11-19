@@ -1,0 +1,17 @@
+function cutMonthFromPeriod(month, startdate, enddate) {
+  var start = moment(startdate);
+  var end = moment(enddate);
+  var newStart;
+  var newEnd;
+  var testdates = [
+    moment(month + '-01-' + start.year()),
+    moment(month + '-01-' + end.year())
+  ];
+  testdates.forEach(function (testdate) {
+    if (testdate.isBetween(moment(start).startOf('month'), moment(end).endOf('month'), null, '[]')) {
+      newStart = start.isSameOrAfter(testdate) ? start : testdate;
+      newEnd = end.isSameOrBefore(moment(testdate).endOf('month')) ? end : moment(testdate).endOf('month');
+    }
+  });
+  return newStart ? [newStart.toDate(), newEnd.toDate()] : null;
+}
