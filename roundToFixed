@@ -1,0 +1,5 @@
+function roundToFixed(num, length) {
+    if(!length) length = 0;
+    var rounded = Number(num).toFixed(length);
+    return rounded;
+}
