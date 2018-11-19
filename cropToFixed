@@ -1,0 +1,6 @@
+function cropToFixed (num, length){
+  var str = num + '',
+    parts = str.split('.');
+  parts[1] = parts[1] || '';
+  return parseFloat(parts[0] + '.' + parts[1].substring(0, length));
+}
