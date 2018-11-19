@@ -1,0 +1,8 @@
+function cropCurrencyToFixed(num, length){
+  if (num != null) {
+    var parts = String(num).split('.');
+    if (length > 0 && parts[1]) parts[1] = parts[1].slice(0, length);
+    num = (length === 0 || !parts[1]) ? parts[0] : parts[0] + '.' + parts[1];
+  }
+  return num;
+}
